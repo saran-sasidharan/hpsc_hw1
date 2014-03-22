@@ -2,7 +2,7 @@
 
 #include<stdio.h>
 #include<omp.h>
-#define N 8
+#define N 1000
 double a[N][N],b[N][N],c[N][N];
 int main()
 {
@@ -35,14 +35,14 @@ int main()
 	t2 = omp_get_wtime();
 	t = t2-t1;
 
-		
+	/*		
 	printf("\n");
 	for(j=0;j<N;j++){
 		printf("\n");
 		for(i=0;i<N;i++){
 			printf("%f \t",c[j][i]);
 		}
-	}
+	}*/
 	printf("Time taken %f \n",t);
 }
 		
