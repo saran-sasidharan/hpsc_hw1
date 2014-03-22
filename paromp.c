@@ -3,6 +3,7 @@
 #include<stdio.h>
 #include<omp.h>
 #define N 8
+#define NP 4
 double a[N][N],b[N][N],c[N][N];
 int main()
 {
@@ -10,10 +11,9 @@ int main()
 	t1 = omp_get_wtime();
 
 	double a_val=1.0,b_val=2.0;
-	double temp;
 	
 	// feeding the two intial matrix with a_val & b_val
-	int i,j,k;
+	int i,j,k,n,thread_avail;
 	for(j=0;j<N;j++){
 		for(i=0;i<N;i++){
 			a[j][i] = a_val;
@@ -21,15 +21,27 @@ int main()
 		}
 	}
 
+	n = N/NP;
+	omp_set_num_threads(NP);
+	
+	#pragma omp parallel
+	{
+	int ID;
+	int i,j,k;
+	double temp;
+	ID = omp_get_thread_num();
+	if(ID==0) thread_avail = omp_get_num_threads();
+	
 	// Multiplication of matrices
-	for(j=0;j<N;j++){
+	for(j=0;j<n;j++){
 		for(i=0;i<N;i++){
 			temp = 0.0;
 			for(k=0;k<N;k++){
-				temp = temp + a[j][k]*b[k][i];
+				temp = temp + a[j+ID*n][k]*b[k][i];
 			}
-			c[j][i] = temp;
+			c[j+ID*n][i] = temp;
 		}
+	}
 	}
 
 	t2 = omp_get_wtime();
