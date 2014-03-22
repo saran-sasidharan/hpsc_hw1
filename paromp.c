@@ -1,4 +1,4 @@
-// Serial code to multiply two matrix of dimension N*N
+// OpenMP code to multiply two matrix of dimension N*N
 
 #include<stdio.h>
 #include<omp.h>
@@ -55,7 +55,7 @@ int main()
 			printf("%f \t",c[j][i]);
 		}
 	}*/
-	printf("Time taken %f \n",t);
+	printf("Time taken %f , calculated with %d threads out of %d requested \n",t,thread_avail,NP);
 }
 		
 		
