@@ -2,7 +2,7 @@
 
 #include<stdio.h>
 #include<omp.h>
-#define N 1000
+#define N 500
 double a[N][N],b[N][N],c[N][N];
 int main()
 {
