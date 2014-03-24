@@ -3,7 +3,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<mpi.h>
-#define N 10000  //Should be a multiple of number of processes
+#define N 100  //Should be a multiple of number of processes
 double a[N][N],b[N][N],d[N][N];
 int main(int argc, char *argv[])
 {
@@ -18,9 +18,9 @@ int main(int argc, char *argv[])
  	MPI_Comm_size(MPI_COMM_WORLD,&NP);
 	n = N/NP;
 	
-	//double *c;
-	//c = malloc(n*N*sizeof(double));
-	double c[n*N];
+	double *c;
+	c = (double*)calloc(n*N,sizeof(double));
+	//double c[n*N];
 	double temp;
 	
 	// Assigning values to matrix
@@ -44,12 +44,12 @@ int main(int argc, char *argv[])
 		}
 	}
 	if (ID > 0){
-		MPI_Send(&c,n*N,MPI_DOUBLE,0,tag,MPI_COMM_WORLD);
+		MPI_Send(c,n*N,MPI_DOUBLE,0,tag,MPI_COMM_WORLD);
 	}
 	
 	if (ID == 0){
 	for (i=1;i<NP;i++){
-		MPI_Recv(&c,n*N,MPI_DOUBLE,i,tag,MPI_COMM_WORLD,&status);
+		MPI_Recv(c,n*N,MPI_DOUBLE,i,tag,MPI_COMM_WORLD,&status);
 		count = 0;
 		for (j=0;j<n;j++){
 			for (k=0;k<N;k++){
@@ -71,7 +71,9 @@ int main(int argc, char *argv[])
 
 	printf("Time taken %f \n",t2);
 	}
+free(c);
 MPI_Finalize();
+return 0;
 }
 		
 		

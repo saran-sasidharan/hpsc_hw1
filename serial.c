@@ -2,22 +2,21 @@
 
 #include<stdio.h>
 #include<omp.h>
-#define N 500
+#define N 100
 double a[N][N],b[N][N],c[N][N];
 int main()
 {
 	double t1,t2,t;
 	t1 = omp_get_wtime();
 
-	double a_val=1.0,b_val=2.0;
 	double temp;
 	
 	// feeding the two intial matrix with a_val & b_val
 	int i,j,k;
 	for(j=0;j<N;j++){
 		for(i=0;i<N;i++){
-			a[j][i] = a_val;
-			b[j][i] = b_val;
+			a[j][i] = i+j;
+			b[j][i] = i*j;
 		}
 	}
 
@@ -44,6 +43,7 @@ int main()
 		}
 	}*/
 	printf("Time taken %f \n",t);
+//return 0;
 }
 		
 		
