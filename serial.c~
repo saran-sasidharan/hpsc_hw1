@@ -1,7 +1,7 @@
 // Serial code to multiply two matrix of dimension N*N
 
 #include<stdio.h>
-#include<omp.h> // Just for finding run time
+#include<omp.h>
 #define N 100
 double a[N][N],b[N][N],c[N][N];
 int main()

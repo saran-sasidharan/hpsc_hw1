@@ -20,7 +20,6 @@ int main(int argc, char *argv[])
 	
 	double *c;
 	c = (double*)calloc(n*N,sizeof(double));
-	//double c[n*N];
 	double temp;
 	
 	// Assigning values to matrix
