@@ -1,4 +1,4 @@
-// Serial code to multiply two matrix of dimension N*N
+// openMP code to multiply two matrix of dimension N*N
 
 #include<stdio.h>
 #include<omp.h>

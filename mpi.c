@@ -1,4 +1,4 @@
-// Serial code to multiply two matrix of dimension N*N
+// MPI code to multiply two matrix of dimension N*N
 
 #include<stdio.h>
 #include<stdlib.h>
