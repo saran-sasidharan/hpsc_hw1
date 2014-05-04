@@ -1,5 +1,6 @@
 // openMP code to multiply two matrix of dimension N*N
-
+// gcc -fopenmp open.c
+// ./a.out
 #include<stdio.h>
 #include<omp.h>
 #define N 800
