@@ -1,9 +1,10 @@
 // MPI code to multiply two matrix of dimension N*N
-
+// mpicc program.c
+// mpirun -np 4 a.out
 #include<stdio.h>
 #include<stdlib.h>
 #include<mpi.h>
-#define N 100  //Should be a multiple of number of processes
+#define N 800  //Should be a multiple of number of processes
 double a[N][N],b[N][N],d[N][N];
 int main(int argc, char *argv[])
 {

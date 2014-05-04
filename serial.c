@@ -1,13 +1,14 @@
 // Serial code to multiply two matrix of dimension N*N
 
 #include<stdio.h>
-#include<omp.h> // Just for finding run time
-#define N 100
+//#include<omp.h> // Just for finding run time
+#include<time.h>
+#define N 800
 double a[N][N],b[N][N],c[N][N];
 int main()
 {
 	double t1,t2,t;
-	t1 = omp_get_wtime();
+	t1 = clock();
 
 	double temp;
 	
@@ -31,8 +32,8 @@ int main()
 		}
 	}
 
-	t2 = omp_get_wtime();
-	t = t2-t1;
+	t2 = clock();
+	t = (double)(t2-t1)/CLOCKS_PER_SEC;
 
 	/*		
 	printf("\n");

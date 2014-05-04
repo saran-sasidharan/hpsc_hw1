@@ -2,8 +2,8 @@
 
 #include<stdio.h>
 #include<omp.h>
-#define N 100
-#define NP 2
+#define N 800
+#define NP 4
 double a[N][N],b[N][N],c[N][N];
 int main()
 {
